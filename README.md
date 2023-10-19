@@ -6,36 +6,41 @@ Java RESTful API criada para a Santander Dev Week.
 ## Diagrama de Classes (Domínio da API)
 
 ```mermaid
-class User {
-  - String nomeEstabelecimento
-  - Address endereco
-  - Contact contato
-  - OperatingHours horarioFuncionamento
-  - List<String> servicosOferecidos
-  - Map<String, String> precos
-}
+classDiagram
+  class User {
+    -String name
+    -Account account
+    -Feature[] features
+    -Card card
+    -News[] news
+  }
 
-class Address {
-  - String rua
-  - String cidade
-  - String estado
-}
+  class Account {
+    -String number
+    -String agency
+    -Number balance
+    -Number limit
+  }
 
-class Contact {
-  - String telefone
-  - String instagran
-}
+  class Feature {
+    -String icon
+    -String description
+  }
 
-class OperatingHours {
-  - String segundaFeira
-  - String tercaFeira
-  - String quartaFeira
-  - String quintaFeira
-  - String sextaFeira
-  - String sabado
-  - String domingo
-}
+  class Card {
+    -String number
+    -Number limit
+  }
 
+  class News {
+    -String icon
+    -String description
+  }
+
+  User "1" *-- "1" Account
+  User "1" *-- "N" Feature
+  User "1" *-- "1" Card
+  User "1" *-- "N" News
 ```
 
 ## IMPORTANTE
