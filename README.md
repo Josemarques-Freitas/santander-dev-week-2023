@@ -5,37 +5,25 @@ RESTfull API para Projeto de conclusão do SDW-2023.
 
 ```mermaid
 classDiagram
-class User {
-  - String nomeEstabelecimento
-  - Address endereco
-  - Contact contato
-  - OperatingHours horarioFuncionamento
-  - List<String> servicosOferecidos
-  - Map<String, String> precos
-}
-
-class Address {
-  - String rua
-  - String cidade
-  - String estado
-}
-
-class Contact {
-  - String telefone
-  - String instagran
-}
-
-class OperatingHours {
-  - String segundaFeira
-  - String tercaFeira
-  - String quartaFeira
-  - String quintaFeira
-  - String sextaFeira
-  - String sabado
-  - String domingo
-}
-
-User "1" *-- "N" Address
-User "1" *-- "N" Contact
-User "1" *-- "N" OperatingHours
+    class House {
+        -id: int
+        -name: string
+        -number: Address
+        -features: Feature[]
+    }
+    
+    class Address {
+        -id: int
+        -number: string
+        -local: string
+    }
+    
+    class Feature {
+        -id: int
+        -icon: string
+        -description: string
+    }
+    
+    House "1" *-- "1" Address: Contains
+    House "1" *-- "*" Feature: Has
 ```
