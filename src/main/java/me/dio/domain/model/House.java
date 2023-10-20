@@ -4,8 +4,9 @@ import jakarta.persistence.*;
 
 import java.util.List;
 
-@Entity(name = "tb_user")
-public class User {
+@Entity(name = "tb_houser")
+//User
+public class House {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,16 +15,10 @@ public class User {
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Account account;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private Card card;
+    private Number number;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Feature> features;
-
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<News> news;
 
     public Long getId() {
         return id;
@@ -41,20 +36,12 @@ public class User {
         this.name = name;
     }
 
-    public Account getAccount() {
-        return account;
+    public Number getNumber() {
+        return number;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
-    public Card getCard() {
-        return card;
-    }
-
-    public void setCard(Card card) {
-        this.card = card;
+    public void setNumber(Number number) {
+        this.number = number;
     }
 
     public List<Feature> getFeatures() {
@@ -63,14 +50,6 @@ public class User {
 
     public void setFeatures(List<Feature> features) {
         this.features = features;
-    }
-
-    public List<News> getNews() {
-        return news;
-    }
-
-    public void setNews(List<News> news) {
-        this.news = news;
     }
 
 }
